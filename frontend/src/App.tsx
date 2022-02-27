@@ -8,8 +8,8 @@ function App() {
   useEffect(() => {
 
     let vh = window.innerHeight * 0.01;
-
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    console.log(window.innerHeight)
+    document.documentElement.style.setProperty('--vh', `100vh`);
   }, [])
   return (
     <div className="App">

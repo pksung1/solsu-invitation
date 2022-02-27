@@ -20,7 +20,7 @@ const Tickets = () => {
   const bottomTicketAnimation = isClicked ? 'animation(2s/ease/forwards/bottomTicketDrop)' : "animation(2s/ease/infinite/alternate/bottomRotate)"
   // 모바일 반응형 처리 필요
   return (
-    <section className='absolute top(0) bottom(0) w(100vw) h(--vh) bg(#fff) hbox pack overflow(hidden)'>
+    <section className='absolute top(0) bottom(0) w(100vw) h(100vh) bg(#fff) hbox pack overflow(hidden)'>
       <div className="@w(~475):transform(scale(0.6))" ref={ticketRef}>
         <div onClick={onClickTicket} className={`${ticketAnimation}`}>
           {/* <<< TOP TICKET <<< */}
@@ -77,7 +77,7 @@ const Tickets = () => {
           <p className="text-align(center) mt(18) font(--font-ticket-3)">티켓을 눌러 청첩장을 확인해보세요.</p>
         </div>
       </div>
-      <div className={`absolute transform(translateY(--vh)) top(0px) ${airplaneAnimation}`}>
+      <div className={`absolute transform(translateY(100vh)) top(0px) ${airplaneAnimation}`}>
         <img src="airplane.png" />
       </div>
       
