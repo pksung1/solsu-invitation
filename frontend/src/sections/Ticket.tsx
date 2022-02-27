@@ -5,7 +5,6 @@ const nameClass = "w(184px) font-ticket-1 700 font(24) c(--color-black) bg(--col
 const title2 = "font-family(--font-ticket-1) 400 font(12) c(--color-gray)"
 const text2 = "font-family(--font-ticket-2) 700 font(20)"
 
-const animation = "animation(2s/ease/infinite/alternate/bottomRotate)"
 
 const Tickets = () => {
 
@@ -17,6 +16,7 @@ const Tickets = () => {
 
   const ticketAnimation = isClicked ? 'animation(2s/ease/forwards/ticketAnimation)' : '' 
   const airplaneAnimation = isClicked ? 'animation(2s/ease/forwards/airplaneAnimation)' : ''
+  const bottomTicketAnimation = isClicked ? 'animation(2s/ease/forwards/bottomTicketDrop)' : "animation(2s/ease/infinite/alternate/bottomRotate)"
 
   return (
     <section className='absolute top(0) bottom(0) w(100vw) h(100vh) bg(#fff) hbox pack @w(~390):transform(scale(0.8))'>
@@ -58,7 +58,7 @@ const Tickets = () => {
         {/* >>> TOP TICKET >>> */}
 
         {/* <<< BOTTOM TICKET <<< */}
-        <div className={`bg(--color-primary) p(10px) border-radius(0/0/20px/20px) box-shadow(3px/3px/10px/--color-gray) ${animation}`}>
+        <div className={`bg(--color-primary) p(10px) border-radius(0/0/20px/20px) box-shadow(3px/3px/10px/--color-gray) ${bottomTicketAnimation}`}>
           <div className="bg(--color-white)">
             <div className="hbox(fill)">
               <div className="vbox(fill) flex(1)">

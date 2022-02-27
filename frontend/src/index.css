@@ -59,3 +59,13 @@ code {
   }
 }
 
+@keyframes bottomTicketDrop {
+  from {
+    transform-origin: top right;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(120px, 200px) rotate(-30deg);
+  }
+}
+
