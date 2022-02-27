@@ -21,7 +21,7 @@ const Tickets = () => {
   // 모바일 반응형 처리 필요
   return (
     <section className='absolute top(0) bottom(0) w(100vw) h(100vh) bg(#fff) hbox pack overflow(hidden)'>
-      <div className="@w(~390):transform(scale(0.5))" ref={ticketRef}>
+      <div className="@w(~475):transform(scale(0.6))" ref={ticketRef}>
         <div onClick={onClickTicket} className={`${ticketAnimation}`}>
           {/* <<< TOP TICKET <<< */}
           <div className='bg(--color-primary) p(10px) hbox(fill) mb(3) border-radius(20px/20px/0/0) box-shadow(3px/3px/10px/--color-gray)'>
