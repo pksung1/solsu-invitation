@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import "@adorable.css"
 import Tickets from './sections/Ticket'
 
 function App() {
+  useEffect(() => {
 
+    let vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, [])
   return (
     <div className="App">
       <Tickets />
