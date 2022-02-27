@@ -1,0 +1,37 @@
+GET http://localhost:4001/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "hello nickname",
+  "comment": "Good day today"
+}
+
+### 
+
+POST http://localhost:4001/comment HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "박성원",
+  "comment": "댓글내용"
+}
+
+###
+
+POST http://localhost:4001/comment/8585e6ba-7c71-44b3-ba69-2965b96f238a HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "박성원",
+  "content": "댓글내용"
+}
+
+###
+
+PUT http://localhost:4001/comment
+Content-Type: application/json
+
+{
+  "nickname": "새로운 닉네임",
+  "content": "댓글내용 업데이트"
+}
