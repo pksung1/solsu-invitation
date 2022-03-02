@@ -68,3 +68,13 @@ code {
     transform: translate(120px, 200px) rotate(-30deg);
   }
 }
+
+
+@keyframes mainOpacity {
+  from {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}

@@ -6,7 +6,7 @@ const title2 = "font-family(--font-ticket-1) 400 font(12) c(--color-gray)"
 const text2 = "font-family(--font-ticket-2) 700 font(20)"
 
 
-const Tickets = () => {
+const Tickets = ({onAnimationEnd}: {onAnimationEnd: () => void}) => {
 
   const [isClicked, setIsClicked] = useState(false)
   const ticketRef = useRef<HTMLDivElement>(null)
@@ -77,7 +77,7 @@ const Tickets = () => {
           <p className="text-align(center) mt(18) font(--font-ticket-3)">티켓을 눌러 청첩장을 확인해보세요.</p>
         </div>
       </div>
-      <div className={`absolute transform(translateY(100vh)) top(0px) ${airplaneAnimation}`}>
+      <div className={`absolute transform(translateY(100vh)) top(0px) ${airplaneAnimation}`} onAnimationEnd={onAnimationEnd}>
         <img src="airplane.png" />
       </div>
       
