@@ -20,7 +20,7 @@ const Tickets = ({onAnimationEnd}: {onAnimationEnd: () => void}) => {
   const bottomTicketAnimation = isClicked ? 'animation(2s/ease/forwards/bottomTicketDrop)' : "animation(2s/ease/infinite/alternate/bottomRotate)"
   // 모바일 반응형 처리 필요
   return (
-    <section className='absolute top(0) bottom(0) w(100vw) h(100vh) bg(#fff) hbox pack overflow(hidden)'>
+    <section className='absolute top(0) bottom(0) w(100vw) h(100vh) z-index(9999) bg(#fff) hbox pack overflow(hidden)'>
       <div className="@w(~475):transform(scale(0.6))" ref={ticketRef}>
         <div onClick={onClickTicket} className={`${ticketAnimation}`}>
           {/* <<< TOP TICKET <<< */}
