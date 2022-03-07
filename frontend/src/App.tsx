@@ -9,6 +9,8 @@ import Map from './sections/Map'
 import RenderIf from './comp/RenderIf'
 import BrideModal from './sections/BrideModal'
 import GroomModal from './sections/GroomModal'
+import AcoundBrideModal from './sections/AcoundBrideModal'
+import AcoundGroomModal from './sections/AcoundGroomModal'
 
 const MainImage = styled.img`
   width: 100%;
@@ -62,6 +64,8 @@ function App() {
   const ModalView = useMemo(() => {
     if (modalOpen === 'BrideNumber') return <BrideModal />
     if (modalOpen === 'GroomNumber') return <GroomModal />
+    if (modalOpen === 'BrideAccount') return <AcoundBrideModal />
+    if (modalOpen === 'GroomAccount') return <AcoundGroomModal />
     return null;
   }, [modalOpen])
 
@@ -72,19 +76,6 @@ function App() {
       window.removeEventListener('resize', setScreenSize)
     }
   }, [])
-
-  useEffect(() => {
-
-    if (isTicketFinish) {
-      var mapOptions = {
-        // @ts-ignore
-        center: new naver.maps.LatLng(37.3595704, 127.105399),
-        zoom: 10
-      };
-      // @ts-ignore
-      var map = new naver.maps.Map('map', mapOptions);
-    }
-  }, [isTicketFinish])
 
   return (
     <div className="App">
@@ -185,11 +176,11 @@ function App() {
             <div className='border-bottom(1px/solid/var(--color-primary)) w(12px) margin(0/auto/20px)' />
             
             <div className='vbox gap(18px)'>
-              <button className='hbox(center) gap(37px)'>
+              <button className='hbox(center) gap(37px)' onClick={() => setModalOpen('GroomAccount')}>
                 <p><NameSpan>신랑 측</NameSpan> 계좌번호</p>
                 <img src="man.png" />
               </button>
-              <button className='hbox(center) gap(37px)'>
+              <button className='hbox(center) gap(37px)' onClick={() => setModalOpen('BrideAccount')}>
                 <p><NameSpan primary>신부 측</NameSpan> 계좌번호</p>
                 <img src="woman.png" />
               </button>

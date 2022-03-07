@@ -19,3 +19,17 @@ export const Icon = styled.img`
   width: 32px;
   height: 32px;
 `
+
+export const AccountWrapper = styled.div`
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.1);
+`
+
+export const AccountTitle = styled.p<{primary?: boolean}>`
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-SpoqaHanSans);
+  line-height: 21px;
+  color: ${({primary}) => primary ? 'var(--color-primary-1)' : 'var(--color-secondary)'} ;
+  text-align: center;
+  margin-bottom: 40px;
+`

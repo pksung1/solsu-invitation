@@ -22,7 +22,7 @@ const GroomModal = () => {
 
       <p className="font-family(--font-SpoqaHanSans) color(--color-black-300)">모 | 이영단 </p>
       <div className="hbox(right) gap(10px)">
-      <a href={msg2}>
+        <a href={msg2}>
           <Icon src="/message2.png"/>
         </a>
         <a href={phone2}>
