@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import "@adorable.css"
@@ -7,9 +7,12 @@ import styled from '@emotion/styled'
 import Gallery from './sections/Gallary'
 import Map from './sections/Map'
 import RenderIf from './comp/RenderIf'
+import BrideModal from './sections/BrideModal'
+import GroomModal from './sections/GroomModal'
 
 const MainImage = styled.img`
   width: 100%;
+  min-height: 590px;
 `
 const NameSpan = styled.span<{primary?: boolean}>`
   font-family: var(--font-SpoqaHanSans);
@@ -35,15 +38,32 @@ const MapMenu = styled.button<{active?: boolean}>`
   font-weight: 700;
 `
 
+const Modal = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 4000;
+  background: rgba(0,0,0,0.4);
+`
+
 function App() {
   const [isTicketFinish, setIsTicketFinish] = useState(false)
   const [menuActive, setMenuActive] = useState<'BON' | 'PIRO'>('PIRO')
+  const [modalOpen, setModalOpen] = useState<'BrideNumber' | 'GroomNumber' | 'BrideAccount' | 'GroomAccount' | null>(null)
 
   const setScreenSize = () => {
     let vh = window.innerHeight * 0.01;
     console.log(vh)
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
+
+  const ModalView = useMemo(() => {
+    if (modalOpen === 'BrideNumber') return <BrideModal />
+    if (modalOpen === 'GroomNumber') return <GroomModal />
+    return null;
+  }, [modalOpen])
 
   useEffect(() => {
     setScreenSize()
@@ -68,6 +88,13 @@ function App() {
 
   return (
     <div className="App">
+      <RenderIf isRender={modalOpen !== null}>
+        <Modal onClick={() => setModalOpen(null)}>
+          <div onClick={(e) => e.stopPropagation()}>
+            {ModalView}
+          </div>
+        </Modal>
+      </RenderIf>
       <RenderIf isRender={!isTicketFinish} >
         <Tickets onAnimationEnd={() => setIsTicketFinish(true)} />
       </RenderIf>
@@ -113,11 +140,11 @@ function App() {
 
           {/* 연락하기 */}
           <div className='padding(120px/0) vbox gap(18px)'>
-            <button className='hbox(center) gap(23px)'>
+            <button className='hbox(center) gap(23px)' onClick={() => setModalOpen('GroomNumber')}>
               <p><NameSpan>신랑 측</NameSpan>에게 연락하기</p>
               <img src="man.png" />
             </button>
-            <button className='hbox(center) gap(23px)'>
+            <button className='hbox(center) gap(23px)' onClick={() => setModalOpen('BrideNumber')}>
               <p><NameSpan primary>신부 측</NameSpan>에게 연락하기</p>
               <img src="woman.png" />
             </button>
