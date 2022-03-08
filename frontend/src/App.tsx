@@ -108,7 +108,9 @@ function App() {
           {/* 장소 누군지 보여주는곳 */}
           <div className='mt(80px) mb(80px)'>
             <a href="#map">
-              <p className='font-family(--font-NanumMyeongjo) font-size(16px) text-center line-height(28px) mb(40px)'>2022년 4월 23일 토요일 오후 4시 40분<br />보타닉파크웨딩 카라홀 </p>
+              <p className='font-family(--font-NanumMyeongjo) font-size(16px) text-center line-height(28px) mb(40px) '>
+                2022년 4월 23일 토요일 오후 4시 40분<br /><span className='text-decoration(underline)'>보타닉파크웨딩 카라홀</span>
+              </p>
             </a>
             <div className='vbox(center)'>
               <div className='vbox(right) gap(12px)'>
