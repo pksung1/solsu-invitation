@@ -48,6 +48,9 @@ const Modal = styled.div`
   height: 100vh;
   z-index: 4000;
   background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 function App() {
@@ -81,7 +84,7 @@ function App() {
     <div className="App">
       <RenderIf isRender={modalOpen !== null}>
         <Modal onClick={() => setModalOpen(null)}>
-          <div onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()} className="w(90%)">
             {ModalView}
           </div>
         </Modal>
@@ -104,7 +107,9 @@ function App() {
           </div>
           {/* 장소 누군지 보여주는곳 */}
           <div className='mt(80px) mb(80px)'>
-            <p className='font-family(--font-NanumMyeongjo) font-size(16px) text-center line-height(28px) mb(40px)'>2022년 4월 23일 토요일 오후 4시 40분<br />보타닉파크웨딩 카라홀 </p>
+            <a href="#map">
+              <p className='font-family(--font-NanumMyeongjo) font-size(16px) text-center line-height(28px) mb(40px)'>2022년 4월 23일 토요일 오후 4시 40분<br />보타닉파크웨딩 카라홀 </p>
+            </a>
             <div className='vbox(center)'>
               <div className='vbox(right) gap(12px)'>
                 <p className='font-family(--font-SpoqaHanSans) color(--color-black-300) font(14px)'>
@@ -123,9 +128,14 @@ function App() {
             <Text primary className='text-align(center) mb(20px)'>인사의 말</Text>
             <p className='text-align(center) font-family(--font-SpoqaHanSans) font(16px) font-weight(400)'>
               <Text primary>우리 드 디 어 결 혼 한 다!</Text>
-              2015년부터 지금까지 먼 길을 돌아 이제야 <br />
-              그 종착점을 찾았습니다! <br />
+              2015년부터 지금까지 먼 길을 돌아 <br />
+              이제야 그 종착점을 찾았습니다! <br />
               저희의 또 다른 새로운 시작을 함께 해주세요!
+              <br />
+              <br />
+              <NameSpan primary>4/9(토) 피로연</NameSpan><br /><span className='font(14px)'>숲 속의 컨벤션</span>
+              <br /><br />
+              <NameSpan primary>4/23(토) 본식</NameSpan><br /><span className='font(14px)'>보타닉파크웨딩</span>
             </p>
           </div>
 
@@ -158,7 +168,7 @@ function App() {
 
           {/* 맵 */}
           <Text primary className='text-align(center) mb(20px) mt(77px)' fontFamily='var(--font-NanumMyeongjo)'>오셔서 자리를 빛내주세요.</Text>
-          <Text primary className='mb(15px) text-center'>MAP</Text>
+          <Text primary className='mb(15px) text-center' id='map'>MAP</Text>
           <div className='border-bottom(1px/solid/var(--color-primary)) w(12px) margin(0/auto/20px)' />
 
           <div>

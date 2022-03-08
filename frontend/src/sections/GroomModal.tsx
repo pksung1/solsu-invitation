@@ -8,7 +8,7 @@ const GroomModal = () => {
   const {phone: phone2, msg: msg2} = usePhone('010-8980-4581')
 
   return (
-    <Grid className="p(44px/20px/24px) bg(--color-gray-300) w(100%)">
+    <Grid className="p(44px/20px/24px) bg(--color-gray-300) w(100%) border-radius(12px)">
       <GridTitle maxRow={3}>신랑 측</GridTitle>
       <p className="font-family(--font-SpoqaHanSans) color(--color-black-300)">김상호 </p>
       <div className="hbox(right) gap(10px)">

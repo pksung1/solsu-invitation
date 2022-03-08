@@ -6,6 +6,8 @@ const title2 = "font-family(--font-ticket-1) 400 font(12) c(--color-gray)"
 const text2 = "font-family(--font-ticket-2) 700 font(20)"
 
 
+const ANIMATION_TIME = '3.5s'
+
 const Tickets = ({onAnimationEnd}: {onAnimationEnd: () => void}) => {
 
   const [isClicked, setIsClicked] = useState(false)
@@ -15,9 +17,9 @@ const Tickets = ({onAnimationEnd}: {onAnimationEnd: () => void}) => {
     setIsClicked(true)
   }
 
-  const ticketAnimation = isClicked ? 'animation(2s/ease/forwards/ticketAnimation)' : '' 
-  const airplaneAnimation = isClicked ? 'animation(2s/ease/forwards/airplaneAnimation)' : ''
-  const bottomTicketAnimation = isClicked ? 'animation(2s/ease/forwards/bottomTicketDrop)' : "animation(2s/ease/infinite/alternate/bottomRotate)"
+  const ticketAnimation = isClicked ? 'animation(3.5s/ease/forwards/ticketAnimation)' : '' 
+  const airplaneAnimation = isClicked ? 'animation(3.5s/ease/forwards/airplaneAnimation)' : ''
+  const bottomTicketAnimation = isClicked ? 'animation(3.5s/ease/forwards/bottomTicketDrop)' : "animation(2s/ease/infinite/alternate/bottomRotate)"
   // 모바일 반응형 처리 필요
   return (
     <section className='absolute top(0) bottom(0) w(100vw) h(100vh) z-index(9999) bg(#fff) hbox pack overflow(hidden)' >
