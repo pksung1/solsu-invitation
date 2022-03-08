@@ -34,7 +34,7 @@ const Map = ({menu}: {menu: 'BON' | 'PIRO'}) => {
       zoom: 14
     };
     // @ts-ignore
-    var map = new naver.maps.Map('map', mapOptions);
+    var map = new naver.maps.Map('naver-map', mapOptions);
     // @ts-ignore
     var marker = new naver.maps.Marker({
       // @ts-ignore
@@ -55,7 +55,7 @@ const Map = ({menu}: {menu: 'BON' | 'PIRO'}) => {
         </a>
       </div>
       <div>
-        <div id="map" className='w(100%) h(400px)'></div>
+        <div id="naver-map" className='w(100%) h(400px)'></div>
       </div>
       <div className="padding(30px/20px)">
         <div className="padding(12px/34px/16px) bg(--color-white) border-radius(36px)">
