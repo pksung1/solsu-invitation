@@ -87,7 +87,6 @@ function App() {
 
   useEffect(() => {
     if (isTicketFinish) {
-      
       Lottie.loadAnimation({
         container: document.getElementById('lottie-id'),
         renderer: 'svg',
@@ -115,11 +114,18 @@ function App() {
         <Tickets onAnimationEnd={() => setIsTicketFinish(true)} />
       </RenderIf>
       <RenderIf isRender={isTicketFinish} >
-        <div className={`max-width(375px) vbox(fill) margin(0/auto) pb(100px) ${isTicketFinish && 'animation(4s/ease/forwards/pangAnimation)'}`}>
+        
+        {isTicketFinish && (
+          <div className='max-width(375px) vbox(fill) margin(0/auto) relative'>
+            <div className='max-width(375px) min-height(500px) overflow(hidden) absolute z-index(9999)'>
+              <div className='transform(scale(2)) w(100%) h(100%) relative top(210px)' id="lottie-id"></div>
+            </div>
+          </div>
+        )}
+        <div className={`max-width(375px) vbox(fill) margin(0/auto) pb(100px) ${isTicketFinish && 'animation(2.5s/ease/forwards/pangAnimation)'}`}>
           <p className='mb(20px) font-family(--font-IBM) font(12)'>NO.220423</p>
           {/* 풀이미지 */}
           <div className='width(100%) relative'>
-            <div className='w(100%) min-height(590px) absolute z-index(4000) top(50%) transform(scale(1.8))' id="lottie-id"></div>
             {/* 백그라운드 이미지 추가 */}
             <MainImage src="/main.png" />
             <div className='absolute  top(60px) left(50%) transform(translate(-50%,0)) vbox(center) gap(12px)'>
