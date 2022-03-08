@@ -39,7 +39,7 @@ code {
   }
   to {
     transform-origin: top right;
-    transform: rotate(-1deg);
+    transform: rotate(-3deg);
   }
 }
 
@@ -84,3 +84,4 @@ code {
     opacity:1;
   }
 }
+

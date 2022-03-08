@@ -10,7 +10,7 @@ const BrideModal = () => {
   const {phone: phone3, msg: msg3} = usePhone('010-7564-7379')
 
   return (
-    <Grid className="p(44px/20px/24px) bg(--color-gray-300) w(100%)">
+    <Grid className="p(44px/20px/24px) bg(--color-gray-300) w(100%) border-radius(12px)">
       <GridTitle primary maxRow={4}>신부 측</GridTitle>
       <p className="font-family(--font-SpoqaHanSans) color(--color-black-300)">김솔수</p>
       <div className="hbox(right) gap(10px)">

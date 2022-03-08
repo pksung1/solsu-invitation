@@ -6,7 +6,7 @@ import { AccountTitle, AccountWrapper, Grid, GridTitle, Icon } from "./styled";
 const AcoundBrideModal = () => {
 
   return (
-    <AccountWrapper className="p(44px/20px/24px) bg(--color-gray-300) w(100%)">
+    <AccountWrapper className="p(44px/20px/24px) bg(--color-gray-300) w(100%) border-radius(12px)">
       <AccountTitle primary>신부 측에게 마음 전하기</AccountTitle>
       
       <AccountBox name="김솔수" bank="카카오뱅크 3333045626216" primary/>
