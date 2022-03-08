@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { MouseEvent, useMemo, useState } from "react";
 import RenderIf from "../comp/RenderIf";
+import Slider from 'react-touch-drag-slider'
+import XIcon from "../comp/XIcon";
 
 const IMAGES = [
   "/slider/IMG_2054.JPG",
@@ -94,14 +96,48 @@ const Gallery = () => {
     <div className='w(100%)'>
       {/* 이미지 모달창 */}
       <RenderIf isRender={openImageModal}>
-        <div className="position(fixed) w(100vw) h(100vh) bg(--color-white) z-index(9999) left(0) top(0) animation(0.3s/ease/forwards/mainOpacity)" onClick={() => setOpenImageModal(false)} onScroll={(e) => e.stopPropagation()} onScrollCapture={(e) => e.stopPropagation()}>
-          <img src="arrowLeft.png" onClick={onClickPrevImage} className="absolute top(50%) left(0) z-index(2) hover:bg(white) p(10px)"/>
+        <div className="position(fixed) w(100vw) h(100vh) bg(--color-white) z-index(9999) left(0) top(0) animation(0.3s/ease/forwards/mainOpacity)" >
+          <div onClick={() => setOpenImageModal(false)} className="w(30px) h(30px) top(10px) left(10px) absolute z-index(4000)">
+            <XIcon fill="red" />  
+          </div>
+          {/* @ts-ignore */}
+          <Slider
+            onSlideComplete={(i: number) => {
+              console.log('finished dragging, current slide is', i)
+            }}
+            onSlideStart={(i: number) => {
+              console.log('started dragging on slide', i)
+            }}
+            activeIndex={0}
+            threshHold={100}
+            transition={0.5}
+            scaleOnDrag={true}
+          >
+            {images.map(({img}) => <img src={img.src} className="object-fit(contain) h(100%)" />)}
+          </Slider>
+          {/* <img src="arrowLeft.png" onClick={onClickPrevImage} className="absolute top(50%) left(0) z-index(2) hover:bg(white) p(10px)"/>
           <img src={images[displayImageIndex].img.src} className="object-fit(contain) h(100%)" />
-          <img src="arrowRight.png" onClick={onClickNextImage} className="absolute top(50%) right(0) z-index(2) p(10px)"/>
+          <img src="arrowRight.png" onClick={onClickNextImage} className="absolute top(50%) right(0) z-index(2) p(10px)"/> */}
         </div>
       </RenderIf>
       <div className='w(100%) h(270px) bg(--color-gray-300) mb(24px) hbox(center)' onClick={() => setOpenImageModal(true)}>
-        <img src={images[displayImageIndex].img.src} className="object-fit(cover) h(100%)" />
+        {/* @ts-ignore */}
+        <Slider
+          onSlideComplete={(i: number) => {
+            setDisplayImageIndex(i)
+            console.log('finished dragging, current slide is', i)
+          }}
+          onSlideStart={(i: number) => {
+            console.log('started dragging on slide', i)
+          }}
+          activeIndex={0}
+          threshHold={100}
+          transition={0.5}
+          scaleOnDrag={true}
+        >
+          {images.map(({img}) => <img src={img.src} className="object-fit(contain) h(100%)" />)}
+        </Slider>
+        {/* <img src={images[displayImageIndex].img.src} className="object-fit(cover) h(100%)" /> */}
       </div>
       <div className='w(100%) h(76px) bg(--color-gray-300) p(8px/21px) flex-direction(row) display(flex) gap(8px)'>
         <img src="arrowLeft.png" onClick={onClickPrevImage}/>
