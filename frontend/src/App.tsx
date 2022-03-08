@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import "@adorable.css"
@@ -11,6 +11,7 @@ import BrideModal from './sections/BrideModal'
 import GroomModal from './sections/GroomModal'
 import AcoundBrideModal from './sections/AcoundBrideModal'
 import AcoundGroomModal from './sections/AcoundGroomModal'
+import Lottie from 'lottie-web'
 
 const MainImage = styled.img`
   width: 100%;
@@ -55,12 +56,11 @@ const Modal = styled.div`
 
 function App() {
   const [isTicketFinish, setIsTicketFinish] = useState(false)
-  const [menuActive, setMenuActive] = useState<'BON' | 'PIRO'>('PIRO')
+  const [menuActive, setMenuActive] = useState<'BON' | 'PIRO'>('BON')
   const [modalOpen, setModalOpen] = useState<'BrideNumber' | 'GroomNumber' | 'BrideAccount' | 'GroomAccount' | null>(null)
 
   const setScreenSize = () => {
     let vh = window.innerHeight * 0.01;
-    console.log(vh)
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
 
@@ -80,6 +80,28 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const mainImg = new Image()
+    mainImg.src = "main.png"
+  }, [])
+
+  useEffect(() => {
+    if (isTicketFinish) {
+      
+      Lottie.loadAnimation({
+        container: document.getElementById('lottie-id'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: 'particle.json'
+      })
+    }
+
+    return () => {
+      document.getElementById('lottie-id').innerHTML = ''
+    }
+  }, [isTicketFinish])
+
   return (
     <div className="App">
       <RenderIf isRender={modalOpen !== null}>
@@ -93,10 +115,11 @@ function App() {
         <Tickets onAnimationEnd={() => setIsTicketFinish(true)} />
       </RenderIf>
       <RenderIf isRender={isTicketFinish} >
-        <div className={`max-width(375px) vbox(fill) margin(0/auto) pb(100px) ${isTicketFinish && 'animation(0.3s/ease/forwards/mainOpacity)'}`}>
+        <div className={`max-width(375px) vbox(fill) margin(0/auto) pb(100px) ${isTicketFinish && 'animation(4s/ease/forwards/pangAnimation)'}`}>
           <p className='mb(20px) font-family(--font-IBM) font(12)'>NO.220423</p>
           {/* 풀이미지 */}
           <div className='width(100%) relative'>
+            <div className='w(100%) min-height(590px) absolute z-index(4000) top(50%) transform(scale(1.8))' id="lottie-id"></div>
             {/* 백그라운드 이미지 추가 */}
             <MainImage src="/main.png" />
             <div className='absolute  top(60px) left(50%) transform(translate(-50%,0)) vbox(center) gap(12px)'>
