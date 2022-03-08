@@ -117,7 +117,7 @@ function App() {
         
         {isTicketFinish && (
           <div className='max-width(375px) vbox(fill) margin(0/auto) relative'>
-            <div className='max-width(375px) min-height(500px) overflow(hidden) absolute z-index(9999)'>
+            <div className='max-width(375px) min-height(500px) overflow(hidden) absolute z-index(9999) left(0px)'>
               <div className='transform(scale(2)) w(100%) h(100%) relative top(210px)' id="lottie-id"></div>
             </div>
           </div>
