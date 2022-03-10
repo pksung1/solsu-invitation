@@ -164,7 +164,7 @@ function App() {
               저희의 또 다른 새로운 시작을 함께 해주세요!
               <br />
               <br />
-              <NameSpan primary>4/9(토) 피로연</NameSpan><br /><span className='font(14px)'>숲 속의 컨벤션</span>
+              <NameSpan primary>4/9(토) 신랑 피로연</NameSpan><br /><span className='font(14px)'>숲 속의 컨벤션</span>
               <br /><br />
               <NameSpan primary>4/23(토) 본식</NameSpan><br /><span className='font(14px)'>보타닉파크웨딩</span>
             </p>
