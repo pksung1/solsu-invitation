@@ -7,6 +7,7 @@ const BON_CONTENT = {
   tel: '0507-1412-8301',
   pos: [37.56755203026521, 126.82754515519096],
   kakaoMapId: '1089036510',
+  naverMapId: '37648800'
 }
 
 const PIRO_CONTENT = {
@@ -14,7 +15,8 @@ const PIRO_CONTENT = {
   location: '제주 서귀포시 일주서로 88 숲속의컨벤션',
   tel: '064-739-5555',
   pos: [33.25079683757662, 126.49880746884706],
-  kakaoMapId: '7975840'
+  kakaoMapId: '7975840',
+  naverMapId: '12991522'
 }
 
 const Map = ({menu}: {menu: 'BON' | 'PIRO'}) => {
@@ -62,7 +64,7 @@ const Map = ({menu}: {menu: 'BON' | 'PIRO'}) => {
           <p className="font(14px) font-family(--font-SpoqaHanSans) text-center">길 안내</p>
           <div className="hbox(center) gap(20px) ">
             {/* 지도 이미지 및 링크 */}
-            <a href={`nmap://map?lat=${CONTENT.pos[0]}&lng=${CONTENT.pos[1]}&zoom=14&appname=solsu-invitation`}>
+            <a href={`nmap://place?id=${CONTENT.naverMapId}&zoom=14&appname=solsu-invitation`}>
               <img src="/naverMap.png"/>
             </a>
             <a href={`kakaomap://place?id=${CONTENT.kakaoMapId}`}>
