@@ -1,4 +1,4 @@
-GET http://localhost:4001/comments HTTP/1.1
+GET http://localhost:4001/comments/1 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -13,7 +13,8 @@ Content-Type: application/json
 
 {
   "nickname": "박성원",
-  "comment": "댓글내용"
+  "comment": "댓글내용",
+  "password": "123456789"
 }
 
 ###
@@ -23,7 +24,8 @@ Content-Type: application/json
 
 {
   "nickname": "박성원",
-  "content": "댓글내용"
+  "content": "댓글내용",
+  "password": "123456789"
 }
 
 ###
