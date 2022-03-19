@@ -12,7 +12,9 @@ import GroomModal from './sections/GroomModal'
 import AcoundBrideModal from './sections/AcoundBrideModal'
 import AcoundGroomModal from './sections/AcoundGroomModal'
 import Lottie from 'lottie-web'
-
+import { useGetComments } from './api/comment'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { useCreateFetch } from './hooks/commentHooks'
 const MainImage = styled.img`
   width: 100%;
   min-height: 590px;
@@ -101,8 +103,18 @@ function App() {
     }
   }, [isTicketFinish])
 
+  const {isLoading, result, fetch} = useCreateFetch()
+
   return (
     <div className="App">
+
+      <button onClick={() => {fetch({
+        nickname: "Hello",
+        comment: "Test Comment",
+        password: "fanwkdasd"
+      })}}>
+        Hello World
+      </button>
       <RenderIf isRender={modalOpen !== null}>
         <Modal onClick={() => setModalOpen(null)}>
           <div onClick={(e) => e.stopPropagation()} className="w(90%)">
@@ -110,12 +122,12 @@ function App() {
           </div>
         </Modal>
       </RenderIf>
-      <RenderIf isRender={!isTicketFinish} >
+      {/* <RenderIf isRender={isTicketFinish} >
         <Tickets onAnimationEnd={() => setIsTicketFinish(true)} />
-      </RenderIf>
-      <RenderIf isRender={isTicketFinish} >
+      </RenderIf> */}
+      <RenderIf isRender={!isTicketFinish} >
         
-        {isTicketFinish && (
+        {!isTicketFinish && (
           <div className='max-width(375px) vbox(fill) margin(0/auto) relative'>
             <div className='max-width(375px) min-height(500px) overflow(hidden) absolute z-index(9999) left(0px)'>
               <div className='transform(scale(2)) w(100%) h(100%) relative top(210px)' id="lottie-id"></div>
@@ -238,4 +250,17 @@ function App() {
   )
 }
 
-export default App
+
+const queryClient = new QueryClient()
+
+const WithQueryApp = () => {
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  )
+}
+
+export default WithQueryApp
+

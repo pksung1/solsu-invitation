@@ -19,7 +19,7 @@ function getComments(page: number = 1) {
     page = 1
   }
 
-  return db.prepare(`SELECT id, comment, nickname FROM ${TABLE} orders LIMIT ${PAGE_SIZE} OFFSET ${(page - 1) * PAGE_SIZE}`).all()
+  return db.prepare(`SELECT id, comment, nickname, parentId FROM ${TABLE} orders LIMIT ${PAGE_SIZE} OFFSET ${(page - 1) * PAGE_SIZE}`).all()
 }
 
 function createComment(comment: CommentDAO) {

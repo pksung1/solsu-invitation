@@ -5,11 +5,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 import dotenv from 'dotenv'
 import {getComments, createComment,updateComment, deleteComment} from './db/Comment'
-
+import cors from 'cors'
 
 const app = express()
 
 app.set('port', 4001)
+
+app.use(cors())
 
 app.use(morgan('dev'))
 app.use(session({
@@ -47,7 +49,8 @@ app.post('/comment', (req, res) => {
     password: password
   })
 
-  res.send(result)
+  console.log(result)
+  res.json(result)
   res.end()
 })
 
@@ -62,7 +65,7 @@ app.post('/comment/:parentId', (req, res) => {
     password: password,
     parentId: parentId
   })
-  res.send(result)
+  res.json(result)
   res.end()
 })
 
@@ -77,7 +80,7 @@ app.put('/comment/:id', (req, res) => {
     nickname,
   })
 
-  res.send(result)
+  res.json(result)
   res.end()
 })
 
@@ -87,7 +90,7 @@ app.delete('/comment/:id', (req, res) => {
   
   const result = deleteComment(id, password)
 
-  res.send(result)
+  res.json(result)
   res.end()
 })
 
