@@ -4,7 +4,7 @@ import session from 'express-session'
 import { v4 as uuidv4 } from 'uuid';
 
 import dotenv from 'dotenv'
-import {getComments, createComment} from './db/Comment'
+import {getComments, createComment,updateComment, deleteComment} from './db/Comment'
 
 
 const app = express()
@@ -39,40 +39,55 @@ app.get('/comments/:page', (req, res) => {
 
 app.post('/comment', (req, res) => {
   const {nickname, comment, password} = req.body;
-  // comments.push({id: uuidv4(), nickname, comment})
 
-  createComment({
+  const result = createComment({
     id: uuidv4(),
     nickname: nickname,
     comment: comment,
     password: password
   })
 
-  res.send([])
+  res.send(result)
   res.end()
 })
 
 app.post('/comment/:parentId', (req, res) => {
   const parentId = req.params.parentId
   const {nickname, comment, password} = req.body;
-  // comments.push({id: uuidv4(), nickname, comment, parentId})
 
-  createComment({
+  const result = createComment({
     id: uuidv4(),
     nickname: nickname,
     comment: comment,
     password: password,
     parentId: parentId
   })
-  res.send([])
+  res.send(result)
   res.end()
 })
 
 app.put('/comment/:id', (req, res) => {
   const id = req.params.id
-  const {nickname, comment} = req.body
+  const {nickname, comment, password} = req.body
 
-  res.send()
+  const result = updateComment({
+    id,
+    password,
+    comment,
+    nickname,
+  })
+
+  res.send(result)
+  res.end()
+})
+
+app.delete('/comment/:id', (req, res) => {
+  const id = req.params.id
+  const {password} = req.body
+  
+  const result = deleteComment(id, password)
+
+  res.send(result)
   res.end()
 })
 

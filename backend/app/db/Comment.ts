@@ -28,6 +28,18 @@ function createComment(comment: CommentDAO) {
   return queryResult
 }
 
+function updateComment(comment: CommentDAO) {
+  const updateCommentQuery = db.prepare(`UPDATE ${TABLE} SET comment=? where id=? and password=?`)
+  const queryResult = updateCommentQuery.run( comment.comment, comment.id, comment.password)
+  return queryResult
+}
+
+function deleteComment(id: String, password: String) {
+  const deleteCommentQuery = db.prepare(`DELETE FROM ${TABLE} WHERE id=? and password=?`)
+  const queryResult = deleteCommentQuery.run(id, password)
+  return queryResult
+}
+
 
 function initComment() {
   const createTableQuery = db.prepare(`CREATE TABLE IF NOT EXISTS ${TABLE} (
@@ -43,4 +55,4 @@ function initComment() {
 }
 
 initComment()
-export {getComments, createComment}
+export {getComments, createComment, updateComment, deleteComment}
