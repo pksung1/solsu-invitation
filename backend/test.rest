@@ -1,0 +1,45 @@
+GET http://localhost:4001/comments/1 HTTP/1.1
+Content-Type: application/json
+
+
+### 
+
+POST http://localhost:4001/comment HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "박성원",
+  "comment": "댓글내용",
+  "password": "123456789"
+}
+
+###
+
+POST http://localhost:4001/comment/8585e6ba-7c71-44b3-ba69-2965b96f238a HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "박성원",
+  "content": "댓글내용",
+  "password": "123456789"
+}
+
+###
+
+PUT http://localhost:4001/comment/be79f707-67ea-43a2-b9db-cab77e97e8a9
+Content-Type: application/json
+
+{
+  "nickname": "새로운 닉네임",
+  "comment": "업데이트 합니다 ㅎㅎ",
+  "password": "12344232256789"
+}
+
+###
+
+DELETE http://localhost:4001/comment/00af8957-2a4f-496c-b11b-7856bee3977c
+Content-Type: application/json
+
+{
+  "password": "123456789"
+}
